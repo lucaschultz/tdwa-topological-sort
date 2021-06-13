@@ -19,14 +19,21 @@ Rheinische Friedrich-Wilhelms-Universität Bonn
 
 #### Inhalt
 
+1. Anschauliche Beschreibung des Problems
+2. Formale Definition des Problems
+3. Intuitive Beschreibung von Kahns Sortieralgorithmus
+4. Implementierung in Python
+5. Zusammenfassung
+6. Quellen
+
 ---
 
 #### Sortieren von gerichteten Graphen
 
-![right 70%](simple_graphs.pdf)
+![right 70%](./illustrations/simple_graphs.pdf)
 
-- Ordnung von Knoten eines **gerichteten**, **asyklischen** Graph
-- Für jede gerichtete Kante von Knoten $$a$$ zu Knoten $$b$$ ist Knoten $$a$$ vor Knoten $$b$$ in der Ordnung.
+- Ordnung von Knoten eines **gerichteten**, **azyklischen** Graphs
+- Für jede gerichtete Kante von Knoten $$a$$ zu Knoten $$f$$ ist Knoten $$a$$ vor Knoten $$f$$ in der Ordnung.
 - Zum Beispiel anwendbar:
     + Belegung von Lehrveranstaltungen
     + Softwareentwicklung
@@ -38,11 +45,11 @@ Rheinische Friedrich-Wilhelms-Universität Bonn
 
 #### Mathematik: Starke Ordnung
 
-- Eine Ordungn $$\prec_R$$ einer Menge $$M$$ ist eine **binäre Relation** $$\prec_R \subseteq M \times M$$
-- Eine binäre Relation ist eine **starke Ordnung** genau dann wenn sie folgende Bedingungen erfüllt: 
+- Eine Ordung $$\prec_R$$ einer Menge $$M$$ ist eine **binäre Relation** $$\prec_R \subseteq M \times M$$
+- Eine binäre Relation ist eine **starke Ordnung** genau dann, wenn sie folgende Bedingungen erfüllt: 
     1. Irreflexivität: $$\forall a \in M: \neg(a \prec_R a)$$
     2. Transitivität: $$\forall a, b, c \in M: a \prec_R b \land b \prec_R c \implies a \prec_R c$$
-    3. Asymetrisch: $$\forall a, b \in M: a \prec_R b \implies \neg(b \prec_R a)$$
+    3. Asymmetrisch: $$\forall a, b \in M: a \prec_R b \implies \neg(b \prec_R a)$$
 
 ---
 
@@ -57,17 +64,17 @@ Beim Graph $$G = (M, \prec_R)$$ auf der [vorherigen Folie](#erster-graph) ist di
 
 #### Mathematik: Starke Totalordnung
 
-- Eine starke Ordnung $$\prec_T$$ heißt **starke Totalordnung** genau dann wenn gilt:
+- Eine starke Ordnung $$\prec_T$$ heißt **starke Totalordnung** genau dann, wenn gilt:
     + $$\prec_T$$ ist **linear**: $$\forall a, b \in M: a = b \underline{\lor} a \prec_T b \underline{\lor} b \prec_T a$$
-- **Sortieralgorithmus:** Finde zu einer starken Ordnung $$\prec_R \subseteq M \times M$$ auf $$M$$ eine starke Totalordnung $$\prec_T$$ so dass gilt $$\prec_R \subseteq \prec_T$$
+- **Sortieralgorithmus:** Finde zu einer starken Ordnung $$\prec_R \subseteq M \times M$$ auf $$M$$ eine starke Totalordnung $$\prec_T$$, so dass gilt $$\prec_R \subseteq \prec_T$$
 
 ---
 
-#### Kahns Sortieralgorithmus: Intuition
+#### Kahns Sortieralgorithmus
 
 Jeder gerichtete, azyklische Graph hat *mindestens* einen Knoten ohne eingehende Kanten (Eingangsgrad $$i = 0$$)
 
-1. Entferne alle Knoten mit $$i = 0$$ und alle Kanten die von ihnen ausgehen
+1. Entferne alle Knoten mit $$i = 0$$ und alle Kanten, die von ihnen ausgehen
 2. Füge die entfernten Knoten in die geordneten Knoten ein
 3. Es entstehen neue ungeordnete Knoten mit $$i=0$$
 4. Wiederhole bis es keine ungeordneten Knoten mehr gibt
@@ -76,17 +83,17 @@ Jeder gerichtete, azyklische Graph hat *mindestens* einen Knoten ohne eingehende
 
 #### Datensatz aus der Primärquelle
 
-![inline](tree_structure.pdf)
+![inline](./illustrations/example_graph.pdf)
 
 ---
 
 #### Sortierter Datensatz aus der Primärquelle
 
-![inline](tree_sorted.pdf)
+![inline](./illustrations/example_graph_sorted.pdf)
 
 ---
 
-#### Python: Kahns Sortierlgorithmus
+#### Python: Kahns Sortieralgorithmus
 
 ```python
 def topologisch_sortieren(unsortierte_knoten: KnotenListe, kanten: KantenListe) -> KnotenListe:
@@ -107,9 +114,9 @@ def topologisch_sortieren(unsortierte_knoten: KnotenListe, kanten: KantenListe) 
 
 ---
 
-#### Python: Vorbereitung für den Algorithmus
+#### Python: Vorbereitung
 
-![right 130%](data_structure.pdf)
+![right 130%](./illustrations/data_structure.pdf)
 
 [.code-highlight: all]
 [.code-highlight: 1-3]
@@ -272,19 +279,35 @@ for n, node in enumerate(sorted_tasks):
 
 #### Python: Ergebnis
 
-![inline](output1.png) ![inline](output2.png) ![inline](output3.png)
+![inline](./illustrations/output1.png) ![inline](./illustrations/output2.png) ![inline](./illustrations/output3.png)
 
 ---
 
 #### Python: Selber Probieren
 
+![right 45%](./illustrations/browser-screenshot.png)
+
+- Sämtliche Vortragsunterlagen und Skript auf GitHub: <https://github.com/lucaschultz/tdwa-topological-sort>
+- Skript muss mindestens mit [Python 3.5](https://www.python.org/downloads/release/python-350/) ausgeführt werden
+- *Verbose* Option `-v`, gibt bei jedem Schritt an welcher Knoten betrachtet und wie damit verfahren wird
+
 ---
 
 ### Zusammenfassung
 
+- Sortieren von Mengen mit starker Ordnungsrelation
+    + Darstellbar durch gerichtete, azyklische Graphen
+- Laufzeit von Kahns Sortieralgorithmus $$\Theta(|M| + |\prec_T|)$$
+- Anwendung auf Probleme, bei denen keine *vollständige* Ordnung vorhanden ist 
+
 ---
 
+[.autoscale: true]
 
 #### Quellen
 
----
+- Höpfner, H. (2006). Topologisches Sortieren - Mit welcher Aufgabe meiner ToDo-Liste fange ich an? Retrieved June 12, 2021 from <https://algo.rwth-aachen.de/~algorithmus/Algorithmen/algo8/algo08.pdf>
+- Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Clifford, S. (2009). Introduction to Algorithms (2 ed.). MIT Press and McGraw-Hill. Retrieved from <http://books.google.de/books?id=i-bUBQAAQBAJ&hl=&source=gbs_api_>
+- Demaine, E. (2011). Lecture 14: Depth-First Search (DFS), Topological Sort. Retrieved 13. Jun, 2021 from <https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/lecture-14-depth-first-search-dfs-topological-sort/>
+- Kahn, A. B. (1962). Topological sorting of large networks. Communications of the ACM, 5(11), 558-562. doi:10.1145/368996.369025
+- Petersen, W. (2013). Ordnungsrelationen – 4. Foliensatz. Retrieved 13. Jun, 2021 from <https://user.phil.hhu.de/~petersen/WiSe1314_mathGrundl/Petersen_math_grundl_4.pdf>
