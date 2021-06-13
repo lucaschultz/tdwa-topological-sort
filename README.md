@@ -80,7 +80,7 @@ Sortierte Aufgaben:
 ·
 ```
 
-Mehr Informationenn zur Implementierung des Skriptes im Foliensatz.
+Mehr Informationenn zur Implementierung des Skriptes im [Foliensatz](https://github.com/lucaschultz/tdwa-topological-sort/blob/main/TdwA_SS2021_Studienleistung_1_Luca_Schultz_3130274.pdf).
 
 ## Lizenz
 
