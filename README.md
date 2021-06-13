@@ -8,7 +8,7 @@ Dieses Repository enthält Unterlagen zum Vortrag über Topologisches Sortieren 
 
 ![](./illustrations/getting-the-script.png)
 
-Eine naive Version Kahns topologischen Sortierlgorithmus wurde in `implementation.py` implementiert. Der Algorithmus basiert auf der Beschreibung in der vorgegebenen Primärquelle des Vortrags.
+Eine naive Version [Kahns topologischen Sortieralgorithmus](https://dl.acm.org/doi/abs/10.1145/368996.369025) wurde in `implementation.py` implementiert. Der Algorithmus basiert auf der Beschreibung in der [vorgegebenen Primärquelle](https://algo.rwth-aachen.de/~algorithmus/algo8.php) des Vortrags.
 
 Das Skript muss mit mindestens mit [Python 3.5](https://www.python.org/downloads/release/python-350/) ausgeführt werden, da es ausführliche [Type Hints](https://www.python.org/dev/peps/pep-0484/) enthält.
 
@@ -45,7 +45,7 @@ Sortierte Aufgaben:
 ·
 ```
 
-Mit der `-v` oder `--verbose` *flag* gibt die Sortierfunktion bei jedem Schritt an welcher Knoten betrachten und wie mit ihm verfahren wird:
+Mit der `-v` oder `--verbose` Option gibt die Sortierfunktion bei jedem Schritt an welcher Knoten betrachten und wie damit verfahren wird:
 
 ```
 $ python3 implementation.py --verbose
