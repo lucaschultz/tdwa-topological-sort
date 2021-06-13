@@ -45,7 +45,7 @@ Sortierte Aufgaben:
 ·
 ```
 
-Mit der `-v` oder `--verbose` Option gibt die Sortierfunktion bei jedem Schritt an welcher Knoten betrachten und wie damit verfahren wird:
+Mit der `-v` oder `--verbose` Option gibt die Sortierfunktion bei jedem Schritt an welcher Knoten betrachtet und wie damit verfahren wird:
 
 ```
 $ python3 implementation.py --verbose
