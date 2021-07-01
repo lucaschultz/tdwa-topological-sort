@@ -51,6 +51,10 @@ Rheinische Friedrich-Wilhelms-Universität Bonn
     2. Transitivität: $$\forall a, b, c \in M: a \prec_R b \land b \prec_R c \implies a \prec_R c$$
     3. Asymmetrisch: $$\forall a, b \in M: a \prec_R b \implies \neg(b \prec_R a)$$
 
+^**Irreflexivität**: Element steht nicht in Relation zu sich selbst
+**Transitivität**: Relation von *a* zu *b* und *b* zu *c* impliziert Relation von *a* zu *c*
+**Asymmetrisch**: Wenn zwei Elemente in Relation stehen ist die Umkehrung **nicht** enthalten
+
 ---
 
 #### Mathematik: Beispiel für eine starke Ordnung
@@ -68,6 +72,8 @@ Beim Graph $$G = (M, \prec_R)$$ auf der [vorherigen Folie](#erster-graph) ist di
     + $$\prec_T$$ ist **linear**: $$\forall a, b \in M: a = b \underline{\lor} a \prec_T b \underline{\lor} b \prec_T a$$
 - **Sortieralgorithmus:** Finde zu einer starken Ordnung $$\prec_R \subseteq M \times M$$ auf $$M$$ eine starke Totalordnung $$\prec_T$$, so dass gilt $$\prec_R \subseteq \prec_T$$
 
+^ Linearität: Zwei Elemente *a*, *b* sind entweder gleich, oder es ist *a Relation b* oder *b Relation a*
+
 ---
 
 #### Kahns Sortieralgorithmus
@@ -78,6 +84,8 @@ Jeder gerichtete, azyklische Graph hat *mindestens* einen Knoten ohne eingehende
 2. Füge die entfernten Knoten in die geordneten Knoten ein
 3. Es entstehen neue ungeordnete Knoten mit $$i=0$$
 4. Wiederhole bis es keine ungeordneten Knoten mehr gibt
+
+^ Arthur B. Kahn, 1962 im Artikel **Topological sorting of large networks** in Communications of the ACM *(Association for Computing Machinery)*
 
 ---
 
@@ -111,6 +119,8 @@ def topologisch_sortieren(unsortierte_knoten: KnotenListe, kanten: KantenListe) 
             raise ValueError("Knotenliste enthält zyklische Abhängigkeiten")
     return sortierte_knoten
 ```
+
+^ Naive Variante in 7 Zeilen Code
 
 ---
 
